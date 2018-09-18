@@ -5,9 +5,9 @@ using UnityEngine;
 public class Fishing : MonoBehaviour
 {
     [SerializeField]
-    private GameObject Camerarig;
+    private GameObject[] FishPool = new GameObject[5];
     private Vector3 Pos;
-    private GameObject[] CoolerBox;
+    private GameObject[] CoolerBox = new GameObject[5];
     private bool NowFishing = false;
     private bool FishingDone = false;
     private int FishingTimer = 0;
@@ -34,6 +34,20 @@ public class Fishing : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             StartCoroutine(SetFishingTimer());
+        }
+
+        if(FishingDone)
+        {
+            FishingDone = false;
+            for(int i=0;i<5 ;i++)
+            {
+                if(CoolerBox[i] == null)
+                {
+                    CoolerBox[i] = FishPool[0];
+                    Debug.Log(CoolerBox[i]);
+                    break;
+                }
+            }
         }
     }
 
