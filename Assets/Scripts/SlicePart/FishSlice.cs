@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class FishSlice : MonoBehaviour {
 
-    //切り身
-    [SerializeField]
-    private GameObject FishFillets;
+
+    private GameObject netaObject;
 
     //切った回数
     [SerializeField]
@@ -16,6 +15,8 @@ public class FishSlice : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        sliceCount = 0;
+       netaObject= Instantiate((GameObject)Resources.Load("Prefabs/neta"), gameObject.transform.position, Quaternion.identity);
+       netaObject.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -35,7 +36,7 @@ public class FishSlice : MonoBehaviour {
                 //５回切ったとき魚を非アクティブ状態にする
                 gameObject.SetActive(false);
                 //切り身をアクティブ
-                FishFillets.gameObject.SetActive(true);
+                netaObject.gameObject.SetActive(true);
             }
         }
     }

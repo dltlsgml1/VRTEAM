@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 95763510986288996}
   - component: {fileID: 114764012956964644}
   m_Layer: 0
-  m_Name: SimpleSardine
+  m_Name: Fish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,8 +1115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 228d6b3e45e43e141bf3720f3a8fe3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FishFillets: {fileID: 1969823587885934, guid: a86a36f6fb9c457459b82e1e56dbe119,
-    type: 2}
   sliceCount: 0
 --- !u!137 &137281948142805556
 SkinnedMeshRenderer:
