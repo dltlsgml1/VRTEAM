@@ -48,7 +48,7 @@ public class ControllerGrabObject : MonoBehaviour {
 
 	// 掴むことが可能なオブジェクトかを判断して取得
 	private void SetCollidingObject(Collider _col) {
-		// 常にプレイヤーが手にものを持っている、
+		// 既にプレイヤーが手にものを持っている、
 		// または、当たっているオブジェクトが物理オブジェクトでない場合
 		if(m_collidingObject ||
 			!_col.GetComponent<Rigidbody>()) {
@@ -57,6 +57,24 @@ public class ControllerGrabObject : MonoBehaviour {
 
 		// 掴むことが可能なオブジェクトを取得
 		m_collidingObject = _col.gameObject;
+	}
+
+
+	// シャリを生成して持てるオブジェクトに追加
+	private void SetSyariObject() {
+		// 既にプレイヤーが手にものを持っているとき
+		if (m_collidingObject) {
+			return;	// 何もしない
+		}
+
+		// シャリのプレファブを取得
+		GameObject syariPrefab = (GameObject)Resources.Load("Prefabs/syari");
+
+		// シャリを生成
+		GameObject syari = Instantiate(syariPrefab, this.transform.position, Quaternion.identity);
+
+		// 掴むことが可能なオブジェクトとしてシャリを登録
+		m_collidingObject = syari;
 	}
 
 
@@ -107,8 +125,15 @@ public class ControllerGrabObject : MonoBehaviour {
 
 	// コントローラがオブジェクトと当たった瞬間
 	public void OnTriggerEnter(Collider _other) {
-		// 掴めるかを判断して取得
-		SetCollidingObject(_other);
+		// 米置き場にあたったとき
+		if (_other.tag == "riceBox") {
+			// シャリを生成して持てるオブジェクトに追加
+			SetSyariObject();
+		}
+		else {
+			// 掴めるかを判断して取得
+			SetCollidingObject(_other);
+		}
 	}
 	// 内容はOnTriggerEnterと同じ、バグ予防
 	public void OnTriggerStay(Collider _other) {

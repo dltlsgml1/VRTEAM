@@ -8,6 +8,7 @@ TagManager:
   - neta
   - sushi
   - dish
+  - riceBox
   layers:
   - Default
   - TransparentFX
