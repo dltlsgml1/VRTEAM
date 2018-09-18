@@ -10,8 +10,7 @@ public class Kitchenknife : MonoBehaviour
     private float SliceLowestDistance = 3.0f;   //最低でも包丁を振らないといけない距離
 
     private Vector3 OldPos; //前の座標
-    GameObject HitObject; //包丁に当たったオブジェクト
-    private bool IsHit; //
+    FishSlice scFishSlice;
 
     //初期処理
     void Start()
@@ -19,12 +18,12 @@ public class Kitchenknife : MonoBehaviour
         //現在の位置を保持
         OldPos = transform.position;
 
-        IsHit = false;
     }
 
     //更新処理
     void Update()
     {
+        /*
         if (IsHit)
         {
             //現在のy座標が１フレーム前よりも下なら
@@ -41,21 +40,24 @@ public class Kitchenknife : MonoBehaviour
                 }
             }
         }
+        */
+
+
 
     }
 
     //当たり判定
     private void OnTriggerEnter(Collider other)
     {
-        //当たっているものが魚のとき
+
+        //当たったものが包丁か
         if (other.gameObject.tag == "Fish")
         {
-            IsHit = true;
+            scFishSlice = other.gameObject.GetComponent<FishSlice>();
+            
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        IsHit = false;
-    }
+
+
 }
