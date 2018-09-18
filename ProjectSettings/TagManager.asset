@@ -4,10 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - syari
-  - neta
-  - sushi
-  - dish
+  - Fish
   layers:
   - Default
   - TransparentFX
