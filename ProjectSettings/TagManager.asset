@@ -8,6 +8,8 @@ TagManager:
   - neta
   - sushi
   - dish
+  - FishingZone
+  - knife
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - CanTeleport
   - 
   - 
   - 

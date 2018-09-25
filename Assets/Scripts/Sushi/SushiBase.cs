@@ -8,6 +8,10 @@ using UnityEngine;
 
 public class SushiBase : MonoBehaviour {
 
+	// コントローラーの参照
+	public GameObject m_controller1;
+	public GameObject m_controller2;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -27,10 +31,8 @@ public class SushiBase : MonoBehaviour {
 			if (collision.transform.tag == "neta") {
 				// ネタと合わせて寿司にする
 				MakeSushiWithNetaAndSyari(collision.gameObject);
+
 			}
-		}
-		// 自身が寿司のとき
-		else if(this.transform.tag == "sushi") {
 
 		}
 	}
@@ -57,5 +59,7 @@ public class SushiBase : MonoBehaviour {
 
 		// 自分を寿司に設定
 		this.transform.tag = "sushi";
+
+
 	}
 }
